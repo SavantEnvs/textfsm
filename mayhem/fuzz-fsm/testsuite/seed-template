@@ -1,0 +1,31 @@
+# Header
+# Header 2
+Value Beer (.*)
+Value Wine (\\w+)
+
+# An explanation with a unicode character Δ
+Start
+  ^hi there ${Wine}. -> Next.Record State1
+
+State1
+  ^\\wΔ
+  ^$Beer .. -> Start
+  # Some comments
+  ^$$ -> Next
+  ^$$ -> End
+
+End
+# Tail comment.
+"""
+
+    buf_result = """Value Beer (.*)
+Value Wine (\\w+)
+
+Start
+  ^hi there ${Wine}. -> Next.Record State1
+
+State1
+  ^\\wΔ
+  ^$Beer .. -> Start
+  ^$$ -> Next
+  ^$$ -> End
