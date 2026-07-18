@@ -1,0 +1,13 @@
+# Mayhem target: textfsm parser (Atheris/libFuzzer harness).
+# The cmd binary is a PyInstaller onefile ELF bundling Python+atheris (Mayhem edge collection).
+project: savantenvs/textfsm
+target: fuzz-fsm
+
+cmds:
+  - cmd: /mayhem/fuzz-fsm
+    libfuzzer: true
+    timeout: 15
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz-fsm/testsuite
